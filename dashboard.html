@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
     *{
@@ -246,19 +246,23 @@ body {
     color:white;
 }
 
+
 /* PRINT BUTTON (BOTTOM RIGHT) */
-.print-btn {
+.print-btn{
     position:fixed;
-    bottom:25px;
-    right:25px;
+    bottom:30px;
+    right:30px;
     background:grey;
     color:white;
-    padding:18px 28px;
-    font-size:16px;
     border:none;
+    padding:14px 22px;
     border-radius:10px;
+    font-size:16px;
     cursor:pointer;
     font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    z-index:999;
+
 }
 
 .print-btn:hover {
@@ -309,10 +313,11 @@ body {
     </a>
 
 </div>
+
 <!-- 🔻 PRINT BUTTON -->
 {% if role.lower() in ['visitor', 'therapist', 'contractor', 'volunteer'] %}
-<a href="/print-label">
-    <button class="print-btn">🖨 Print Label</button>
+<a href="/print-label" class="print-btn">
+    🖨 Print Label
 </a>
 {% endif %}
 
