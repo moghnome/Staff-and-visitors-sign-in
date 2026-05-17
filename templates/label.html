@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Label</title>
+</head>
+<body onload="window.print()">
+
+  
+    <h2>Visitor Pass</h2>
+
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Role:</strong> {{ role }}</p>
+    <p><strong>Sign-in:</strong> {{ signin_time }}</p>
+
+<!-- AUTO REDIRECT SCRIPT (FIXED & RELIABLE) -->
+<script>
+    let timeout;
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.href = "/";
+        }, 30000); // 15 seconds
+    }
+
+    function setupActivityTracking() {
+        window.addEventListener("load", resetTimer);
+        document.addEventListener("mousemove", resetTimer);
+        document.addEventListener("keypress", resetTimer);
+        document.addEventListener("click", resetTimer);
+        document.addEventListener("touchstart", resetTimer);
+    }
+
+    setupActivityTracking();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terms and Conditions</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+<h2>Terms and Conditions</h2>
+
+<p>
+Welcome to our system. By using this service, you agree to the following:
+</p>
+
+<ul>
+    <li>You provide accurate information</li>
+	<li> You have a valid WWCC</li>
+    <li>You follow school policies</li>
+    <li>Your data may be recorded for security purposes</li>
+</ul>
+
+<p>Thank you.</p>
+
+<!-- AUTO REDIRECT SCRIPT (FIXED & RELIABLE) -->
+<script>
+    let timeout;
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.href = "/";
+        }, 30000); // 15 seconds
+    }
+
+    function setupActivityTracking() {
+        window.addEventListener("load", resetTimer);
+        document.addEventListener("mousemove", resetTimer);
+        document.addEventListener("keypress", resetTimer);
+        document.addEventListener("click", resetTimer);
+        document.addEventListener("touchstart", resetTimer);
+    }
+
+    setupActivityTracking();
+</script>
+
+</body>
+</html>
