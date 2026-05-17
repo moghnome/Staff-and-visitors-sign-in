@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signed In Users</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #c62828;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Currently Signed In Users</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Sign In Time</th>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>{{ user[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div style="text-align:center;">
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+<!-- AUTO REDIRECT SCRIPT (FIXED & RELIABLE) -->
+<script>
+    let timeout;
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.href = "/";
+        }, 30000); // 30 seconds
+    }
+
+    function setupActivityTracking() {
+        window.addEventListener("load", resetTimer);
+        document.addEventListener("mousemove", resetTimer);
+        document.addEventListener("keypress", resetTimer);
+        document.addEventListener("click", resetTimer);
+        document.addEventListener("touchstart", resetTimer);
+    }
+
+    setupActivityTracking();
+</script>
+
+</body>
+</html>

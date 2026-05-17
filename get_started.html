@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Started</title>
+
+    <style>
+        body { margin:0; font-family:Arial; display:flex; height:100vh; }
+
+        .left {
+            width:50%;
+            background:url("{{ url_for('static', filename='imagesPlayground.jpg') }}") no-repeat center;
+            background-size:cover;
+        }
+
+        .right {
+            width:50%;
+            background:#c62828;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            position:relative;
+        }
+
+        .logo {
+            position:absolute;
+            top:15px;
+            left:15px;
+            width:80px;
+        }
+
+        .box {
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            text-align:center;
+        }
+
+        button {
+            display:block;
+            margin:10px auto;
+            padding:12px;
+            width:200px;
+            background:#c62828;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="left"></div>
+
+<div class="right">
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<div class="box">
+    <h2>Get Started</h2>
+
+    	<a href="/returning"><button>(Returning User) Sign In</button></a>
+    	<a href="/register"><button>(New User) Register</button></a>
+    	<a href="/next"><button>Next Visitor</button></a>
+ 	<a href="/signout"><button>Sign Out</button></a>
+
+	<div style="text-align:center;">
+    	<a href="/"><class="btn">⬅ Back</button></a>
+	</div>
+
+</div>
+
+</div>
+
+<!-- AUTO REDIRECT SCRIPT (FIXED & RELIABLE) -->
+<script>
+    let timeout;
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.href = "/";
+        }, 30000); // 30 seconds
+    }
+
+    function setupActivityTracking() {
+        window.addEventListener("load", resetTimer);
+        document.addEventListener("mousemove", resetTimer);
+        document.addEventListener("keypress", resetTimer);
+        document.addEventListener("click", resetTimer);
+        document.addEventListener("touchstart", resetTimer);
+    }
+
+    setupActivityTracking();
+</script>
+
+</body>
+</html>

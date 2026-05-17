@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT */
+.left {
+    width: 50%;
+    background: url("{{ url_for('static', filename='ESEC images.jpg') }}") no-repeat center;
+    background-size: cover;
+}
+
+/* RIGHT */
+.right {
+    width: 50%;
+    background: linear-gradient(135deg, #c62828, #e53935);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* LOGO */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 90px;
+}
+
+/* BOX */
+.box {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 { margin-bottom: 15px; color: #333; }
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #c62828;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a61c1c;
+}
+
+a {
+    display: block;
+    margin-top: 15px;
+    color: #c62828;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .left { display: none; }
+    .right { width: 100%; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="left"></div>
+
+<div class="right">
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<div class="box">
+
+<h2>Welcome Back</h2>
+
+<!-- ERROR MESSAGE -->
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+<!-- ✅ FIX: use url_for -->
+<form method="POST" action="{{ url_for('login') }}">
+
+    <input id="login_id" name="login_id" placeholder="Email or Mobile" required>
+
+    <!-- 🔐 PIN FIELD (hidden by default) -->
+    <input type="password" id="pin" name="pin" placeholder="Enter Admin PIN" style="display:none;">
+
+    <button type="submit">Sign In</button>
+
+</form>
+
+<a href="/get-started">← Back</a>
+
+</div>
+
+</div>
+
+
+<!-- ✅ SCRIPT: Show PIN only for admin email -->
+<script>
+const adminEmail = "dl.1415.info@schools.sa.edu.au";
+const loginInput = document.getElementById("login_id");
+const pinInput = document.getElementById("pin");
+
+loginInput.addEventListener("input", function () {
+    if (loginInput.value.trim().toLowerCase() === adminEmail) {
+        pinInput.style.display = "block";
+        pinInput.required = true;
+    } else {
+        pinInput.style.display = "none";
+        pinInput.required = false;
+        pinInput.value = "";
+    }
+});
+
+</script>
+
+<!-- AUTO REDIRECT SCRIPT (FIXED & RELIABLE) -->
+<script>
+    let timeout;
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.href = "/";
+        }, 30000); // 30 seconds
+    }
+
+    function setupActivityTracking() {
+        window.addEventListener("load", resetTimer);
+        document.addEventListener("mousemove", resetTimer);
+        document.addEventListener("keypress", resetTimer);
+        document.addEventListener("click", resetTimer);
+        document.addEventListener("touchstart", resetTimer);
+    }
+
+    setupActivityTracking();
+</script>
+
+</body>
+</html>
